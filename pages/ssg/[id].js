@@ -24,7 +24,7 @@ const AirDetails = ({ postData: { id, title, thumbnailUrl } }) => {
 export const getStaticProps = async (context) => {
     const { params } = context;
     console.log(params);
-    const res = await fetch(`http://localhost:3004/posts/${params.id}`);
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
     const data = await res.json();
     console.log(data)
     return {
@@ -35,7 +35,7 @@ export const getStaticProps = async (context) => {
 }
 
 export const getStaticPaths = async () => {
-    const res = await fetch('http://localhost:3004/posts');
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
     const data = await res.json();
     const paths = data.map((item) => {
         return {

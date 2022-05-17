@@ -25,7 +25,7 @@ export default ssg;
 
 export const getStaticProps = async () => {
     console.log('generating / revalidating');
-    const res = await fetch('http://localhost:3004/posts');
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
     const data = await res.json();
     return {
         props: {
