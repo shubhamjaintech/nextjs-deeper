@@ -21,13 +21,13 @@ export default redirectTwo;
 //     }
 // }
 
-export const getServerSideProps = async (context) => {
-    const {params:{zipCode}}=context;
-    console.log('getServerSideProps');
-   console.log(zipCode);
-   return{
-       props:{
-           data:""
-       }
-   }
-}
+// export const getServerSideProps = async (context) => {
+//     const {params:{zipCode}}=context;
+//     console.log('getServerSideProps');
+//    console.log(zipCode);
+//    return{
+//        props:{
+//            data:""
+//        }
+//    }
+// }

@@ -8,8 +8,8 @@ const zip='560085'
 
     const redirect=()=>{
         router.query.zip_code = zip
-        router.push(router)
-        alert('redirecting/changing the query params: ',router.query)
+        router.push(router);
+        alert('redirecting/changing the query params: '+router.query.zip_code)
     }
     return (
         <div>
@@ -32,12 +32,14 @@ export default redirectOne;
 // }
 
 export const getServerSideProps = async (context) => {
-
-if(Object.keys(context.query).length){
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await res.json();
+    console.log('api data', data);
+    if(Object.keys(context.query).length){
     return {
         redirect: {
             permanent: false,
-            destination: "/",
+            destination: "/redi2",
           },
         props: {
             postData: 'data'

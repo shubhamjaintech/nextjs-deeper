@@ -8,6 +8,7 @@ export default function Home() {
       </Head>
 
       <main>
+      <div> <Link href='/redi'>Redirect (Local Pages)</Link></div>
         <div> <Link href='/ssg'>SSG</Link></div>
         <div> <Link href='/SsgGetStaticPaths'>SSGgetStaticPaths</Link></div>
         <div> <Link href='/isg'>ISG</Link></div>
