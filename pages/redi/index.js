@@ -9,6 +9,7 @@ const zip='560085'
     const redirect=()=>{
         router.query.zip_code = zip
         router.push(router)
+        alert('redirecting/changing the query params: ',router.query)
     }
     return (
         <div>
