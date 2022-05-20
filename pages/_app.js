@@ -1,35 +1,45 @@
-import { useEffect } from 'react'
-import Script from 'next/script'
+import { route } from 'next/dist/server/router';
 import { useRouter } from 'next/router'
-import { GTM_ID, pageview } from '../lib/gtm'
+import { useEffect } from 'react';
+import * as ga from '../lib/analytics'
+
+export function reportWebVitals({ id, name, label, value }) {
+  if (label === 'web-vital') {
+    console.log(id,name,value,label) // The metric object ({ id, name, startTime, value, label }) is logged to the console
+  }
+
+    // Use `window.gtag` if you initialized Google Analytics as this example:
+  // https://github.com/vercel/next.js/blob/canary/examples/with-google-analytics/pages/_app.js
+  window.gtag('event', name, {
+    event_category:
+    label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric',
+    value: Math.round(name === 'CLS' ? value * 1000 : value), // values must be integers
+    event_label: id, // id unique to current page load
+    non_interaction: true, // avoids affecting bounce rate.
+  })
+}
+
 
 function MyApp({ Component, pageProps }) {
+
   const router = useRouter()
+
   useEffect(() => {
-    router.events.on('routeChangeComplete', pageview)
+    const handleRouteChange = (url) => {
+      ga.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
-      router.events.off('routeChangeComplete', pageview)
+      router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
 
+
   return (
-    <>
-      {/* Google Tag Manager - Global base code */}
-      <Script
-        id="gtag-base"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer', '${GTM_ID}');
-          `,
-        }}
+      <Component
+        {...pageProps}
+        key={route}
       />
-      <Component {...pageProps} />
-    </>
   )
 }
 
