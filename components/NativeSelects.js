@@ -53,7 +53,7 @@ export default function NativeSelects() {
   return (
     <div>
       <FormControl className={classes.formControl} style={{width: '100%'}}>
-        <InputLabel htmlFor="age-native-simple" shrink={true}>Age</InputLabel>
+        <InputLabel htmlFor="age-native-simple" shrink={true}>Multiple Select</InputLabel>
         <Select
           native
           value={state.age}
