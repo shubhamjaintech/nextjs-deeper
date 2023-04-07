@@ -28,7 +28,7 @@ export default function NativeSelects() {
     const multiSelectValue = [];
     for (let i = 0; i < options?.length; i += 1) {
         if (options[i]?.selected) {
-            multiSelectValue.push(options[i]?.value);
+            multiSelectValue.push(`${options[i]?.value}`);
         }
     }
     return multiSelectValue;
@@ -64,10 +64,9 @@ export default function NativeSelects() {
             id: 'age-native-simple',
           }}
         >
-          <option value="">Select State </option>
-          <option value={10}>Ten</option>
-          <option value={20}>Twenty</option>
-          <option value={30}>Thirty</option>
+          <option value={"Biz 1"}>Ten</option>
+          <option value={"Biz 2 explain"}>Twenty</option>
+          <option value={"Biz 3, explain/doubt/work"}>Thirty</option>
         </Select>
       </FormControl>
 
