@@ -14,6 +14,22 @@ const useStyles = makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  singleSelectField: {
+    backgroundColor: theme.palette.cms?.white || '#ffffff',
+    '& .MuiSelect-select:focus': {
+        backgroundColor: theme.palette.cms?.white || '#ffffff',
+    },
+    width: '30%',
+    [theme.breakpoints.down(600)]: {
+        width: '100%',
+    },
+},
+  multiSelectField: {
+    backgroundColor: theme.palette.cms?.white || '#ffffff',
+    '& .MuiSelect-select:focus': {
+        backgroundColor: theme.palette.cms?.white || '#ffffff',
+    },
+},
 }));
 
 export default function NativeSelects() {
@@ -58,6 +74,7 @@ export default function NativeSelects() {
           native
           value={state.age}
           multiple
+          className={classes.multiSelectField}
           onChange={handleChange}
           inputProps={{
             name: 'age',
@@ -76,6 +93,7 @@ export default function NativeSelects() {
           native
           value={state.singleSelect}
           onChange={handleChange2}
+          className={classes.singleSelectField}
           inputProps={{
             name: 'singleSelect',
             id: 'age-native-simple2',
