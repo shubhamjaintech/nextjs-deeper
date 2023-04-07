@@ -13,6 +13,7 @@ export default function Home() {
         <div> <Link href='/SsgGetStaticPaths'>SSGgetStaticPaths</Link></div>
         <div> <Link href='/isg'>ISG</Link></div>
         <div> <Link href='/ssr'>SSR</Link></div>
+        <div> <Link href='/mui'>MUI</Link></div>
       </main>
 
       <footer>
