@@ -8,15 +8,16 @@ const mui = ({ postData = [] }) => {
             <h1> Demo Multi Select</h1>
             <NativeSelects />
             <h3>
-                {postData.map(({ id, title }, index) => <Link href={`/ssg/${id}`} key={index} passHref><div><p>{index + 1} : {title}
-                </p>
-                </div>
-                </Link>)}
+                {postData.map(({ id, title }, index) => {
+                    return (<div key = {id}>
+                        <p>{index + 1} : {title}</p>
+                    </div>)
+                })}
             </h3>
             <>
                 <NativeSelects />
             </>
-        </div>
+        </div >
     );
 };
 

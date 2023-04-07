@@ -71,7 +71,7 @@ export default function NativeSelects() {
         </Select>
       </FormControl>
 
-      <FormControl className={classes.formControl}>
+      <FormControl className={classes.formControl} style={{marginTop: '3rem'}}>
         <InputLabel htmlFor="age-native-simple2" shrink={true}>singleSelect</InputLabel>
         <Select
           native
