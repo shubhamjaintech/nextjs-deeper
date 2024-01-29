@@ -7,14 +7,17 @@ export default function Home() {
     // window.open('https://open.spotify.com/', '_blank');
     
     // if (isMobile) {
-      try {
+
         window.location.href = 'spotify://open';
-      } catch (error) {
-        const appStoreLink = 'https://apps.apple.com/us/app/spotify-music/id324684580'; 
-        const playStoreLink = 'https://play.google.com/store/apps/details?id=com.spotify.music';
-        const storeLink = isMobile && /iPhone|iPad|iPod/i.test(navigator.userAgent) ? appStoreLink : playStoreLink;
-        window.location.href = storeLink;
-      }
+        setTimeout(() => {
+          if (document.hidden) {
+            const appStoreLink = 'https://apps.apple.com/us/app/spotify-music/id324684580'; 
+            const playStoreLink = 'https://play.google.com/store/apps/details?id=com.spotify.music';
+            const storeLink = true && /iPhone|iPad|iPod/i.test(navigator.userAgent) ? appStoreLink : playStoreLink;
+            window.location.href = storeLink;
+          }
+        }, 2000);
+
     // } else {
     //   window.open('https://open.spotify.com/', '_blank');
     // }
