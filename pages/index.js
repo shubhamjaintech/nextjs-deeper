@@ -3,24 +3,21 @@ import Head from 'next/head'
 export default function Home() {
 
   const redirectToSpotify = () => {
-    // const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    // window.open('https://open.spotify.com/', '_blank');
-    
-    // if (isMobile) {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = 'spotify://open';
+      setTimeout(() => {
+        if (!document.hidden) {
+          const appStoreLink = 'https://apps.apple.com/us/app/spotify-music/id324684580';
+          const playStoreLink = 'https://play.google.com/store/apps/details?id=com.spotify.music';
+          const storeLink = isMobile && /iPhone|iPad|iPod/i.test(navigator.userAgent) ? appStoreLink : playStoreLink;
+          window.location.href = storeLink;
+        }
+      }, 2000);
 
-        window.location.href = 'spotify://open';
-        setTimeout(() => {
-          if (!document.hidden) {
-            const appStoreLink = 'https://apps.apple.com/us/app/spotify-music/id324684580'; 
-            const playStoreLink = 'https://play.google.com/store/apps/details?id=com.spotify.music';
-            const storeLink = true && /iPhone|iPad|iPod/i.test(navigator.userAgent) ? appStoreLink : playStoreLink;
-            window.location.href = storeLink;
-          }
-        }, 2000);
-
-    // } else {
-    //   window.open('https://open.spotify.com/', '_blank');
-    // }
+    } else {
+      window.open('https://open.spotify.com/', '_blank');
+    }
   };
   return (
     <div >
