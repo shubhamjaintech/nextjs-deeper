@@ -10,7 +10,7 @@ export default function Home() {
 
         window.location.href = 'spotify://open';
         setTimeout(() => {
-          if (document.hidden) {
+          if (!document.hidden) {
             const appStoreLink = 'https://apps.apple.com/us/app/spotify-music/id324684580'; 
             const playStoreLink = 'https://play.google.com/store/apps/details?id=com.spotify.music';
             const storeLink = true && /iPhone|iPad|iPod/i.test(navigator.userAgent) ? appStoreLink : playStoreLink;
